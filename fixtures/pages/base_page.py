@@ -26,14 +26,14 @@ class BasePage:
         element = self._find_element(locator, wait_time)
         element.click()
 
-    def fill(self, data, locator, wait_time=60):
+    def fill(self, value: str, locator, wait_time=60):
         """
         Fill element (fill == send_keys)
         :param data: string to fill
         """
         element = self._find_element(locator, wait_time)
-        if data:
-            element.send_keys(data)
+        if value:
+            element.send_keys(value)
 
     def text(self, locator, wait_time=60) -> str:
         """

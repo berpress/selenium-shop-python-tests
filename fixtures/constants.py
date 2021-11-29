@@ -1,0 +1,2 @@
+class RegisterConstants:
+    SUCCESS = "Success"

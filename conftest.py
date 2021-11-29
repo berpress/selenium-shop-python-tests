@@ -43,9 +43,28 @@ def app(request):
     else:
         chrome_options.headless = False
     # chrome_options.headless = False
-    chrome_options.add_argument("--start-maximized")
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    driver.set_window_size(1920, 1080)
     logger.info(f"Start app on {url}")
     app = Application(driver, url)
     yield app
     app.quit()
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item):
+    outcome = yield
+    rep = outcome.get_result()
+    if rep.when == "call" and rep.failed:
+        try:
+            if "app" in item.fixturenames:
+                web_driver = item.funcargs["app"]
+            else:
+                logger.error("Fail to take screen-shot")
+                return
+            logger.info("Screen-shot done")
+            web_driver.driver.save_screenshot(
+                "/Users/alexanderlozovoy/Documents/test.png"
+            )
+        except Exception as e:
+            logger.error("Fail to take screen-shot: {}".format(e))

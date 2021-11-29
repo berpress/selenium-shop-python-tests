@@ -1,3 +1,4 @@
+from fixtures.constants import RegisterConstants
 from fixtures.models.register import RegisterData
 
 
@@ -11,4 +12,4 @@ class TestRegisterPage:
         app.open_main_page()
         data = RegisterData.random()
         app.register.register(data=data)
-        pass
+        assert app.register.get_toast_text() == RegisterConstants.SUCCESS

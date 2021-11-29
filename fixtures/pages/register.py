@@ -22,3 +22,6 @@ class RegisterPage(BasePage):
 
     def get_toast_text(self) -> str:
         return self.text(locator=RegisterLocators.TOAST)
+
+    def get_error(self) -> str:
+        return self.text(locator=RegisterLocators.ERROR)

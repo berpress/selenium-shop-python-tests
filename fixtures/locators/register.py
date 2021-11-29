@@ -8,3 +8,4 @@ class RegisterLocators:
     PASSWORD_INPUT_2 = (By.ID, "password2")
     REGISTER_BUTTON = (By.ID, "register")
     TOAST = (By.ID, "toast-container")
+    ERROR = (By.CLASS_NAME, "card-panel")

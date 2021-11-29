@@ -13,7 +13,6 @@ class RegisterPage(BasePage):
             f"Try to register with email {data.email}, "
             f"first password {data.password}, second password {data.password_2}"
         )
-        # time.sleep(5)
         self.click(locator=RegisterLocators.REGISTER_PAGE)
         self.fill(value=data.email, locator=RegisterLocators.EMAIL_INPUT)
         self.fill(value=data.password, locator=RegisterLocators.PASSWORD_INPUT)

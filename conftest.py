@@ -17,32 +17,18 @@ def pytest_addoption(parser):
         default="https://berpress.github.io/react-shop",
         help="Shop url",
     ),
-    parser.addoption(
-        "--username",
-        action="store",
-        default="super_qa_2021",
-        help="username",
-    ),
-    parser.addoption(
-        "--password",
-        action="store",
-        default="Password11!",
-        help="Password",
-    ),
-    parser.addoption("--headless", action="store_false", help="Headless mode"),
+    parser.addoption("--no-headless", action="store_false", help="Headless mode"),
 
 
 @pytest.fixture()
 def app(request):
     url = request.config.getoption("--url")
-    headless = request.config.getoption("--headless")
-
+    headless = request.config.getoption("--no-headless")
     chrome_options = Options()
     if headless:
         chrome_options.headless = True
     else:
         chrome_options.headless = False
-    # chrome_options.headless = False
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
     driver.set_window_size(1920, 1080)
     logger.info(f"Start app on {url}")

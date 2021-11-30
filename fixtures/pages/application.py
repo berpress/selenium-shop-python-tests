@@ -1,4 +1,5 @@
 from fixtures.pages.balance import BalancePage
+from fixtures.pages.items import ItemsPage
 from fixtures.pages.login import LoginPage
 from fixtures.pages.register import RegisterPage
 
@@ -10,6 +11,7 @@ class Application:
         self.register = RegisterPage(self)
         self.login = LoginPage(self)
         self.balance = BalancePage(self)
+        self.items = ItemsPage(self)
 
     def quit(self):
         self.driver.quit()

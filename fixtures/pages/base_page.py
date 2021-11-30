@@ -6,7 +6,7 @@ class BasePage:
     def __init__(self, app):
         self.app = app
 
-    def _find_element(self, locator, wait_time=60):
+    def _find_element(self, locator, wait_time=20):
         """
         Find element. Use Explicit wait
         :param locator: locator like (By.ID, 'name')
@@ -19,7 +19,7 @@ class BasePage:
         )
         return element
 
-    def click(self, locator, wait_time=60):
+    def click(self, locator, wait_time=20):
         """
         Click element
         """
@@ -35,7 +35,7 @@ class BasePage:
         if value:
             element.send_keys(value)
 
-    def text(self, locator, wait_time=60) -> str:
+    def text(self, locator, wait_time=20) -> str:
         """
         Get element text
         """

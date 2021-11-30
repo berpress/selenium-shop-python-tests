@@ -18,13 +18,13 @@ def pytest_addoption(parser):
         default="https://berpress.github.io/react-shop",
         help="Shop url",
     ),
-    parser.addoption("--no-headless", action="store_false", help="Headless mode"),
+    parser.addoption("--headless", action="store_true", help="Headless mode"),
 
 
 @pytest.fixture()
 def app(request):
     url = request.config.getoption("--url")
-    headless = request.config.getoption("--no-headless")
+    headless = request.config.getoption("--headless")
     chrome_options = Options()
     if headless:
         chrome_options.headless = True
@@ -61,8 +61,6 @@ def pytest_runtest_makereport(item):
                 logger.error("Fail to take screen-shot")
                 return
             logger.info("Screen-shot done")
-            web_driver.driver.save_screenshot(
-                "/Users/alexanderlozovoy/Documents/test.png"
-            )
+            web_driver.driver.save_screenshot("bag.png")
         except Exception as e:
             logger.error("Fail to take screen-shot: {}".format(e))

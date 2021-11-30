@@ -9,3 +9,7 @@ class AuthConstants:
 
 class BalanceConstants:
     UPDATE_BALANCE = "All good, you added {} RUB to your account"
+
+
+class ItemsConstants:
+    ITEM_PAY = "bananas add to cart"

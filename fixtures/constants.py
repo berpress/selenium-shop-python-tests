@@ -5,3 +5,7 @@ class RegisterConstants:
 
 class AuthConstants:
     INVALID_CRED = "Invalid credentials"
+
+
+class BalanceConstants:
+    UPDATE_BALANCE = "All good, you added {} RUB to your account"

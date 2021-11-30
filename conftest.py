@@ -5,6 +5,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
+from fixtures.models.register import RegisterData
 from fixtures.pages.application import Application
 
 logger = logging.getLogger("shop")
@@ -35,6 +36,17 @@ def app(request):
     app = Application(driver, url)
     yield app
     app.quit()
+
+
+@pytest.fixture
+def login(app):
+    """
+    Login fixture
+    """
+    app.open_main_page()
+    data = RegisterData.random()
+    app.register.register(data=data)
+    app.login.auth(data)
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)

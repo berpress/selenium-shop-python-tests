@@ -1,3 +1,4 @@
+from fixtures.pages.balance import BalancePage
 from fixtures.pages.login import LoginPage
 from fixtures.pages.register import RegisterPage
 
@@ -8,6 +9,7 @@ class Application:
         self.url = url
         self.register = RegisterPage(self)
         self.login = LoginPage(self)
+        self.balance = BalancePage(self)
 
     def quit(self):
         self.driver.quit()
